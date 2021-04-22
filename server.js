@@ -1,14 +1,15 @@
 const express = require('express'); 
 const bodyParser = require('body-parser');
-const piRouter = require('./piRouter.js')
+const piRouter = require('./routers/piRouter.js')
 
 const app = express(); 
 const port = 8080; 
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+app.use(express.static('assets'))
 
 app.get('/', function(req, res){
-    res.send("Hello World");
+    res.render('index.ejs')
 })
 
 app.use('/pi',piRouter);

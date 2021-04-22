@@ -1,0 +1,134 @@
+<%- include('./partials/header.ejs') %>
+<!-- slider chính là phần chứa hình ảnh đầu trang -->
+<div id="slider">
+    <div class ="text-content">
+        <h2 class ="text-heading">WEBSITE</h2>
+        <div class ="text-description">Display the coordinates of the blind on the map for relatives to follow.</div>
+    </div>
+  </div>
+ 
+  <!-- Phần content: bao gồm các trang tem, map, contact, more -->
+  <div id="content">
+      <!-- About section -->
+          <div id="team" class ="content-section">
+              <h2 class ="section-heading">THE TEAM</h2>
+              <p class = "section-sub-heading">We want to help people with visual impairments!</p>
+              <p class = "about-text">
+                  Visually impaired people cannot detect obstructions in front of them while traveling on the road (such as cars, ferocious dogs, pedestrians, traffic vehicles and other road-moving objects). Consequently, it is not timely (avoid cars, avoid hitting dogs, ...). Aims to increase initiative for the blind in social activities (detecting loved ones) and in walking on the road (detecting obstructions). We have a solution that combines hardware (raspberry pi) and software (object recognition algorithm YOLOv3) to detect obstructions and detect loved ones. This website aims to: Get the GPS data of the microprocessor device and display the coordinates of the device on a map with the Google Map API.
+              
+                  <!-- Danh sách thành viên(chữ, ảnh) -->
+                  <div class="members-list">
+                  <div class="member-item">
+                      <p class="member-name">Nguyen Nhat Tung</p>
+                      <img src="img/team/number3.jpg" alt="Name" class="member-img">
+                      </div>
+                  </div>
+
+                  <div class="members-list">
+                      <div class="member-item">
+                          <p class="member-name">Le Huu Long</p>
+                          <img src="img/team/number4.jpg" alt="Name" class="member-img">
+                          </div>
+                      </div>
+
+                      <div class="members-list">
+                          <div class="member-item">
+                              <p class="member-name">Tran Anh Duy</p>
+                              <img src="img/team/number2.webp" alt="Name" class="member-img">
+                              </div>
+
+                              <div class="members-list">
+                                  <div class="member-item">
+                                      <p class="member-name">Nguyen Thanh Vinh</p>
+                                      <img src="img/team/number5.png" alt="Name" class="member-img">
+                                      </div>
+                                      <div class="clear"></div>    
+                                  </div>                        
+                          </div>
+          </div>
+
+       <!-- Map section -->
+       <div id="tour" class ="content-section">
+          <h2 class ="section-heading">MAP</h2>
+          <p class = "section-sub-heading">Remember</p>
+          
+
+          <div id="map"></div>    
+
+          <script type="text/javascript">
+          // Để lấy vị trí, chúng ta sử dụng hai hàm navigator.geolocation() và Geolocation. getCurrentPosition().
+          // Các Định vị API được công bố thông qua navigator.geolocation đối tượng.
+            if(navigator.geolocation){
+                var mapDiv = document.getElementById('map');   //Biến mapDiv nhận id map
+                var nav = navigator.geolocation;
+              //   console.log(nav);
+                var pos = nav.getCurrentPosition(fnok);
+               
+                function fnok(position) {
+                    //console.log(position);  //trả vị trí lat, lon của ta
+                    var lat = position.coords.latitude; //alert(position.coords.latitude) : hiển thị vĩ độ
+                    var lon = position.coords.longitude;// alert(position.coords.longitude) : hien thi kinh độ
+                    var gLatLon = new google.maps.LatLng(lat, lon); //hiển thị vị trí: lat + lon, truyền 2 biến vào gLatLon
+                    var ojbConfig ={
+                        zoom: 17,
+                        center: gLatLon
+                    };
+                    var gMap = new google.maps.Map(mapDiv,ojbConfig);//Hiển thị lên bản đồ
+                  //   đánh dấu vị tri
+                    var gMarkerConfig = {
+                        position: gLatLon,
+                        map: gMap,
+                        title: "Nha cua tui"
+                    };
+  
+                    var gMarker = new google.maps.Marker(gMarkerConfig); //Hiển thị vị trí đánh dấu
+                }
+          }//else{
+          //       alert("No");
+          //   }
+          </script>               
+      </div>
+
+     <!-- Begin: Contact section -->
+      <div id="contact" class ="content-section" style="margin-bottom: 100px">
+          <h2 class ="section-heading">CONTACT</h2>
+          <p class = "section-sub-heading">Please contact us when you need it!</p>
+          <!-- bên trái contact -->
+          <div class ="row contact-content">
+              <div class ="col col-half contact-info">
+                  <p><i class="ti-location-pin"></i>DaNang, Vietnam</p>   
+                  <p><i class="ti-mobile"></i>Phone: 0909372635</p>
+                  <p><i class="ti-email"></i>Email: anhduy@gmail.com</p>         
+              </div>
+          </div>
+          <!-- bên phải contact -->
+          <div class ="col col-half contact-form">
+          <form action="">
+              <div class="row">
+                <div class="col col-half">
+                    <input type="text" name="" placeholder="Name" required id="" class="form-control">
+                    </div>
+                    <div class="col col-half">
+                      <input type="email" name="" placeholder="Email" required  id="" class="form-control">
+                      </div>    
+                      <div class="clear"></div>            
+              </div>
+              <div class="row ">
+                  <div class="col col-full mt-8">
+                      <input type="text" name="" placeholder="Message" required  id="" class="form-control">
+                      </div>
+              </div>
+              <input class="btn pull-right mt-16" type="submit" value="SEND">
+          </form>
+          </div>
+      </div>
+
+  </div>
+  <!-- End: Contact section -->
+  
+  <!-- Ảnh Map -->
+  <div class="map-section ">
+      <img src="img/map.jpg" alt="Map">
+  </div>
+
+  <%- include('./partials/footer.ejs') %>
