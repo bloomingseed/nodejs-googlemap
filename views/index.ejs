@@ -53,11 +53,16 @@
           <p class = "section-sub-heading">Remember</p>
           
 
-          <div id="map"></div>    
+          <div id="map"></div>  
+          <span id="server-msg" style="display: none;"><%-msg%></span>  
 
           <script type="text/javascript">
           // Để lấy vị trí, chúng ta sử dụng hai hàm navigator.geolocation() và Geolocation. getCurrentPosition().
           // Các Định vị API được công bố thông qua navigator.geolocation đối tượng.
+            const msg = document.querySelector('#server-msg').innerText;
+            if(msg){
+                alert(msg);
+            }
             if(navigator.geolocation){
                 var mapDiv = document.getElementById('map');   //Biến mapDiv nhận id map
                 var nav = navigator.geolocation;

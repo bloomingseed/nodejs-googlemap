@@ -93,7 +93,7 @@ html{
 
 /*Main*/
 #main {
-     
+     margin-top:45px;
 } 
   /*Header đầu trang*/
 #header {
@@ -167,7 +167,7 @@ html{
     margin-top: 46px;   /*Chiếm bằng header, giúp slider đẩy xuống ngay phía sau chứ ko trùng với header nữa*/
     padding-top: 50%;   /*chiều cao = 50% chiều ngang của chính nó khi thay đổi kích thước web*/
     /* chèn ảnh vào, top center: lấy bên trên căn vị trí chính giữa ảnh */
-    background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
+    background: url('/img/slider/slider1.jpg') top center / cover no-repeat;
 }
 
 /* class cha của 2 thẻ phía dưới */

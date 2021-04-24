@@ -1,6 +1,7 @@
 const express = require('express'); 
 const bodyParser = require('body-parser');
 const piRouter = require('./routers/piRouter.js')
+const indexRouter = require('./routers/index.js')
 
 const app = express(); 
 const port = 8080; 
@@ -8,10 +9,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(express.static('assets'))
 
-app.get('/', function(req, res){
-    res.render('index.ejs')
-})
-
+app.use('/',indexRouter);
 app.use('/pi',piRouter);
 
 
