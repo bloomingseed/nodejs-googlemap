@@ -1,9 +1,9 @@
 var fs = require('fs');
-const dataPath = 'locationHistory.data'
+const dataPath = './locationHistory.data'
 
-function save({lat,lng}){
+function save(center){
     return new Promise((resolve,reject)=>{
-        fs.writeFile(dataPath,[lat,lng].join(','),{encoding:'utf8'},err=>{
+        fs.writeFile(dataPath,center.lat+','+center.lng,{encoding:'utf8'},err=>{
             if(err){
                 reject(err);
             } else{

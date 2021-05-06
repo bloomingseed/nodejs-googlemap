@@ -26,5 +26,15 @@ function initMap(element, center, zoom) {
         };
 
         var gMarker = new google.maps.Marker(gMarkerConfig); //Hiển thị vị trí đánh dấu
+
     }
+}
+function changeCenter(lat, lng, zoom){
+    if(!zoom){
+        zoom = 17;
+    }
+    let center = new google.maps.LatLng(lat,lng);
+    map.setCenter(center);
+    map.setZoom(zoom);
+    let marker = new google.maps.Marker({position:center,map});
 }
