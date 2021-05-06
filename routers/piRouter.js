@@ -5,10 +5,16 @@ var dao = require('../modules/location-dao');
 // Home page route.
 router.post('/', function (req, res) {
     console.log(req.body);
+    let msg;
     let center = {lat:req.body.lat,lng:req.body.lng};
-    dao.save(center);
-    req.app.locals.wss.send(JSON.stringify(center));
-    res.send('Geolocation sent.');
+    if(center.lat&&center.lng){
+        dao.save(center);
+        req.app.locals.wss.send(JSON.stringify(center));
+        msg = 'Geolocation sent';
+    } else{
+        msg = 'Request body must be JSON object containing "lat" and "lng" keys';
+    }
+    res.send(msg);
 })
 router.get('/', async function(req,res){
     // read latest saved location
