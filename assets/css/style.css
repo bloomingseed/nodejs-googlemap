@@ -221,6 +221,7 @@ html{
     font-weight: 500;  /*cho chữ mỏng hơn*/
     text-align: center;  /*căn giữa chữ*/
     letter-spacing: 4px; /*đẩy khoảng cách giữa 2 kí tự trong 1 chữ cách xa nhau*/
+    margin-top: 50px;    
 }
     
 /*section-sub-heading: Dòng chữ chú thích phía dưới TEAM & MAP  */
@@ -235,7 +236,7 @@ html{
 /* Nội dung chữ dài của THE TEAM */
 #content .about-text {
     margin-top: 25px;        /*khoảng cách với dòng chữ phía sau*/
-    font-size: 15px;       /*phông chữ*/
+    font-size: 16px;       /*phông chữ*/
     text-align: justify;    /*căn đều 2 bên*/
     line-height: 1.6;     /*Khoảng cách giữa 2 hàng chữ trong đoạn*/
 }
@@ -326,4 +327,14 @@ html{
 #footer .copyright a{
     margin-top: 15px;
     color: rgb(0, 0, 0, 0.6);
+}
+
+
+
+.black {
+    background-color: #000;
+}
+
+.white {
+    color: #fff !important;
 }
