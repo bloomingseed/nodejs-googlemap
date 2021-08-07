@@ -9,7 +9,9 @@ router.post('/', function (req, res) {
     let center = {lat:req.body.lat,lng:req.body.lng};
     if(center.lat&&center.lng){
         dao.save(center);
-        req.app.locals.wss.send(JSON.stringify(center));
+        if(req.app.locals.wss){
+            req.app.locals.wss.send(JSON.stringify(center));
+        }
         msg = 'Geolocation sent';
     } else{
         msg = 'Request body must be JSON object containing "lat" and "lng" keys';
