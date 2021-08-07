@@ -2,7 +2,7 @@
 /**
  * Initialize Google Map for the `element` container.
  */
-var map;
+// var map;
 function initMap(element, center, zoom) {
     if(!zoom){
         zoom = 17;
@@ -19,6 +19,7 @@ function initMap(element, center, zoom) {
             zoom,
             disableDefaultUI: false,
         });
+        globalThis.map = map;
         var gMarkerConfig = {
             position: center,
             map,
@@ -33,6 +34,7 @@ function changeCenter(lat, lng, zoom){
     if(!zoom){
         zoom = 17;
     }
+    let map = globalThis.map;
     let center = new google.maps.LatLng(lat,lng);
     map.setCenter(center);
     map.setZoom(zoom);
