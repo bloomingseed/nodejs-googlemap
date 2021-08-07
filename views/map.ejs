@@ -9,18 +9,20 @@
 
 <span id="geoLocation" style="display:none;"><%=JSON.stringify(gpsLocation)%></span>    
 <!-- link gg map api (ko có key) -->
-<script type="text/javascript" async="false" defer="false" id="googleApi" src="https://maps.googleapis.com/maps/api/js?v3"></script>
+<!-- <script type="text/javascript" async="false" defer="false" id="googleApi" src="https://maps.googleapis.com/maps/api/js?v3"></script> -->
+
+<script type="text/javascript" src="js/gmaps.js"></script>
 <script type="text/javascript" src="js/mapInstaller.js"></script>
 <script type="text/javascript" >
 
 
-    document.querySelector('#googleApi').onload=function(){
+    // document.querySelector('#googleApi').onload=function(){
         console.log('Displaying map..');
         const mapDiv = document.querySelector('#map');
         const geoLocation = JSON.parse(document.querySelector('#geoLocation').innerText);
         console.log(geoLocation);
         initMap(mapDiv,geoLocation)
-    }
+    // }
 
 </script>
 <script src="js/mapClient.js"></script>
